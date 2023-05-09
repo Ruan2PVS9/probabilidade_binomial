@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Table, TableDiv, ResultProb, Prob } from "./styled";
+import { Table, TableDiv, ResultProb, Prob, InputNumber } from "./styled";
 
 function BinomialProbabilityTable() {
   const [p, setP] = useState(0.5);
@@ -71,37 +71,61 @@ function BinomialProbabilityTable() {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="p">p:</label>
-          <input
+          <InputNumber
+            id="p"
+            min="0"
+            step={0.01}
+            max="1"
+            placeholder={"P || ex: " + p}
+            title="Sendo P a probabilidade de sucesso"
+            onChange={(event) => setP(parseFloat(event.target.value))}
+          />
+          {/* <input
             type="number"
             id="p"
             min="0"
-            // max="1"
-            placeholder="p"
-            // value={p}
+            placeholder={"P || ex: " + p}
+            title="Sendo P a probabilidade de sucesso"
             onChange={(event) => setP(parseFloat(event.target.value))}
-          />
+          /> */}
         </div>
         <div>
           <label htmlFor="x">x:</label>
-          <input
+          <InputNumber
+            id="x"
+            min="0"
+            title="Sendo X a número de sucesso em uma amostra"
+            placeholder={"X || ex: " + x}
+            onChange={(event) => setX(parseInt(event.target.value))}
+          />
+
+          {/* <label htmlFor="x">x:</label> */}
+          {/* <input
             type="number"
             id="x"
             min="0"
-            // value={x}
-            placeholder="x"
+            title="Sendo X a número de sucesso em uma amostra"
+            placeholder={"X || ex: " + x}
             onChange={(event) => setX(parseInt(event.target.value))}
-          />
+          /> */}
         </div>
         <div>
           <label htmlFor="n">n:</label>
-          <input
-            type="number"
+          <InputNumber
             min="0"
-            placeholder="n"
+            placeholder={"N || ex: " + n}
+            title="Sendo N a número total de ensaios"
             id="n"
-            // value={n}
             onChange={(event) => setN(parseInt(event.target.value))}
           />
+          {/* <input
+            type="number"
+            min="0"
+            placeholder={"N || ex: " + n}
+            title="Sendo N a número total de ensaios"
+            id="n"
+            onChange={(event) => setN(parseInt(event.target.value))}
+          /> */}
         </div>
         <button type="submit">Calcular</button>
       </form>
