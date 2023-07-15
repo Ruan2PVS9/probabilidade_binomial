@@ -47,19 +47,21 @@ function BinomialProbabilityTable() {
     }
     for (let i = 0; i < n + 1; i++) {
       const probabilityAcc = AccProbabilities(ProbabilitiesAcc, i + 1);
+      if (Number(x) === Number(i)) {
+        console.log(probabilityAcc);
+        setProbabilitiesAcc(probabilityAcc);
+      }
       newProbabilitiesAcc.push({
         x: i,
         probability: probabilityAcc,
       });
     }
-    const probabilityAccValue = AccProbabilities(
-      ProbabilitiesAcc,
-      ProbabilitiesAcc.length
-    );
+    const probabilityAccValue = AccProbabilities(ProbabilitiesAcc, x + 1);
     setProbabilitiesAcc(newProbabilitiesAcc);
     setProbabilities(newProbabilities);
     setProb(probabilityValue);
     setProbAcc(probabilityAccValue);
+    console.log(probabilityAccValue);
   }
 
   function handleSubmit(event) {
